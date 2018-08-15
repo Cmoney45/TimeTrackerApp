@@ -31,12 +31,31 @@ let rate = 0;
       role = $(`#role`).val().trim();
       date = $(`#date`).val().trim();
       rate = $(`#rate`).val().trim();
-
+    
 
       database.ref().push({
           name: name,
           role: role,
           date: date,
           rate: rate,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
       })
   })
+
+  database.ref().on("child_added", function(childSnapshot) {
+      
+    // full list of items to the well
+    const tableRow = $(`<tr>`);
+    tableRow.append(`<td>${childSnapshot.val().name}`)
+    tableRow.append(`<td>${childSnapshot.val().role}`)
+    tableRow.append(`<td>${childSnapshot.val().date}`)
+    tableRow.append(`<td>Lalal`)
+    tableRow.append(`<td>${childSnapshot.val().rate}`)
+    tableRow.append(`<td>blahblah`)
+
+    $(`#employeeTable`).append(tableRow)
+          
+    // Handle the errors
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
