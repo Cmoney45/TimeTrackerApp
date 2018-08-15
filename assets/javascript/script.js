@@ -59,3 +59,14 @@ let rate = 0;
   }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
   });
+
+
+
+   // Calculate the months worked using hardcore math
+  // To calculate the months worked
+  var Months = moment().diff(moment.unix(Start, "X"), "months");
+  console.log(Months)
+
+  // total billed rate
+  var Billed = Months * Rate;
+  console.log(Billed)
