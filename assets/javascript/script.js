@@ -60,7 +60,7 @@ let rate = 0;
     console.log("Errors handled: " + errorObject.code);
   });
 
-
+/////phase 4
 
    // Calculate the months worked using hardcore math
   // To calculate the months worked
